@@ -635,10 +635,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf53246f51c8d17448c658aaea962aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObstaclePrefab: {fileID: 5169036552142489324, guid: 2f95ed2c8288eb54496a7c1bf4299a28, type: 3}
+  ObstaclePrefabs:
+  - {fileID: 5169036552142489324, guid: 2f95ed2c8288eb54496a7c1bf4299a28, type: 3}
+  - {fileID: 1293525570651301654, guid: f781425ea4c27b344b4fc9d99583d403, type: 3}
+  - {fileID: 2504107045485596113, guid: c050f88280d2e7448b1e891143c48e2b, type: 3}
+  - {fileID: 5761615310193653584, guid: db22579d857db9a438ba295e616c2ad0, type: 3}
   SpawnLocation: {x: 0, y: 2, z: 20}
   SpawnInterval: 3
   NumberOfObstacle: 5
+  XRange: 3
 --- !u!4 &1005385606
 Transform:
   m_ObjectHideFlags: 0
