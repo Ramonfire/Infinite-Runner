@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cannon_Weap
       objectReference: {fileID: 0}
+    - target: {fileID: 2518439120112509137, guid: 0023c8b20ba66f440b40cdfb80d40b9b, type: 3}
+      propertyPath: m_TagString
+      value: Damage
+      objectReference: {fileID: 0}
     - target: {fileID: 3006323887671655019, guid: 0023c8b20ba66f440b40cdfb80d40b9b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -113,6 +117,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canon
       objectReference: {fileID: 0}
+    - target: {fileID: 1518273554706462610, guid: 1893603432dc87140aa6ff880b57d3bd, type: 3}
+      propertyPath: m_TagString
+      value: Damage
+      objectReference: {fileID: 0}
     - target: {fileID: 2122544642214989167, guid: 1893603432dc87140aa6ff880b57d3bd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -152,6 +160,10 @@ PrefabInstance:
     - target: {fileID: 2122544642214989167, guid: 1893603432dc87140aa6ff880b57d3bd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397894356532847339, guid: 1893603432dc87140aa6ff880b57d3bd, type: 3}
+      propertyPath: m_TagString
+      value: Damage
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

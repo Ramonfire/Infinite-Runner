@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest_Prop
       objectReference: {fileID: 0}
+    - target: {fileID: 2021561019665095465, guid: 7e6fb34f368d7a24e862ec8f79407d75, type: 3}
+      propertyPath: m_TagString
+      value: Damage
+      objectReference: {fileID: 0}
     - target: {fileID: 8995156988196662309, guid: 7e6fb34f368d7a24e862ec8f79407d75, type: 3}
       propertyPath: m_Material
       value: 
@@ -113,6 +117,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest
       objectReference: {fileID: 0}
+    - target: {fileID: 1518273554706462610, guid: 1893603432dc87140aa6ff880b57d3bd, type: 3}
+      propertyPath: m_TagString
+      value: Damage
+      objectReference: {fileID: 0}
     - target: {fileID: 2122544642214989167, guid: 1893603432dc87140aa6ff880b57d3bd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -152,6 +160,10 @@ PrefabInstance:
     - target: {fileID: 2122544642214989167, guid: 1893603432dc87140aa6ff880b57d3bd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397894356532847339, guid: 1893603432dc87140aa6ff880b57d3bd, type: 3}
+      propertyPath: m_TagString
+      value: Damage
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

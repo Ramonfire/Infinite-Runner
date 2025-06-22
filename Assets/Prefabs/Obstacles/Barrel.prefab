@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel
       objectReference: {fileID: 0}
+    - target: {fileID: 1518273554706462610, guid: 1893603432dc87140aa6ff880b57d3bd, type: 3}
+      propertyPath: m_TagString
+      value: Damage
+      objectReference: {fileID: 0}
     - target: {fileID: 2122544642214989167, guid: 1893603432dc87140aa6ff880b57d3bd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -52,6 +56,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2397894356532847339, guid: 1893603432dc87140aa6ff880b57d3bd, type: 3}
+      propertyPath: m_TagString
+      value: Damage
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8928197535682587511, guid: 1893603432dc87140aa6ff880b57d3bd, type: 3}
@@ -81,6 +89,10 @@ PrefabInstance:
     - target: {fileID: 2324050925044277620, guid: 01b0d7cd3288fb04aa0c7ed55acafb11, type: 3}
       propertyPath: m_Name
       value: Barrel_Wooden_Prop
+      objectReference: {fileID: 0}
+    - target: {fileID: 2324050925044277620, guid: 01b0d7cd3288fb04aa0c7ed55acafb11, type: 3}
+      propertyPath: m_TagString
+      value: Damage
       objectReference: {fileID: 0}
     - target: {fileID: 3101679061728951246, guid: 01b0d7cd3288fb04aa0c7ed55acafb11, type: 3}
       propertyPath: m_LocalPosition.x

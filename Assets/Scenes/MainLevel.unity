@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: King
       objectReference: {fileID: 0}
+    - target: {fileID: 6034399179512208557, guid: dcbc89efbe5bd174b99e07c76bd0b6bf, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 6410221756858730007, guid: dcbc89efbe5bd174b99e07c76bd0b6bf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -497,7 +501,7 @@ GameObject:
   - component: {fileID: 928817295}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -640,10 +644,14 @@ MonoBehaviour:
   - {fileID: 1293525570651301654, guid: f781425ea4c27b344b4fc9d99583d403, type: 3}
   - {fileID: 2504107045485596113, guid: c050f88280d2e7448b1e891143c48e2b, type: 3}
   - {fileID: 5761615310193653584, guid: db22579d857db9a438ba295e616c2ad0, type: 3}
-  SpawnLocation: {x: 0, y: 2, z: 20}
+  SpawnLocation: {x: 0, y: 2, z: 25}
   SpawnInterval: 3
   NumberOfObstacle: 5
   XRange: 3
+  Lanes:
+  - -2.5
+  - 0
+  - 2.5
 --- !u!4 &1005385606
 Transform:
   m_ObjectHideFlags: 0
@@ -654,37 +662,6 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1205587802
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1205587803}
-  m_Layer: 0
-  m_Name: Chunks
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1205587803
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1205587802}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.07295, y: 0, z: 2.87452}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -740,7 +717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ChunkPrefab: {fileID: 3715540752837196942, guid: cf101ca610f27db4ab09596e605a1c68, type: 3}
-  ChunkParent: {fileID: 1205587803}
+  ChunkParent: {fileID: 1809519875}
   startingChunkAmount: 12
   ChunkLength: 10
   moveSpeed: 5
@@ -755,7 +732,7 @@ GameObject:
   - component: {fileID: 2069872774}
   m_Layer: 0
   m_Name: Model
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -785,5 +762,4 @@ SceneRoots:
   - {fileID: 832575519}
   - {fileID: 928817291}
   - {fileID: 1809519875}
-  - {fileID: 1205587803}
   - {fileID: 1005385606}
