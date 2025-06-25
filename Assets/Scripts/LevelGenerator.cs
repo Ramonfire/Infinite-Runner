@@ -8,10 +8,18 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] int startingChunkAmount =12;
     [SerializeField] int ChunkLength = 10;
     [SerializeField] float moveSpeed = 5f;
+    [SerializeField] float minSpeed = 2f;
+    [SerializeField] float maxSpeed = 20f;
 
 
     List<GameObject> Chunks = new List<GameObject>();
-    
+    CameraController camera;
+    private void Awake()
+    {
+        camera = FindFirstObjectByType<CameraController>();
+    }
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -82,5 +90,22 @@ public class LevelGenerator : MonoBehaviour
         }
       
         return position;
+    }
+
+    public void ChangeLevelSpeedBy(float SpeedAmmount) 
+    {
+        moveSpeed += SpeedAmmount;
+        if (moveSpeed < minSpeed)
+        {
+            moveSpeed = minSpeed;
+            return;
+        }
+        if (moveSpeed > maxSpeed)
+        {
+            moveSpeed = maxSpeed;
+            return;
+        }
+        Physics.gravity = new Vector3(Physics.gravity.x, Physics.gravity.y, Physics.gravity.z - SpeedAmmount);
+        camera.ChangeCameraFov(SpeedAmmount);
     }
 }

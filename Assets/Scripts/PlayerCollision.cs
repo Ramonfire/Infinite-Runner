@@ -1,5 +1,7 @@
 using UnityEngine;
-
+using UnityEngine.Assertions;
+using UnityEngine.Rendering.Universal;
+[RequireComponent(typeof(PlayerController))]
 public class PlayerCollision : MonoBehaviour
 {
     [SerializeField] string CoinTag = "Coin"; //match it to the editor
@@ -8,11 +10,16 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField] string TriggerName = "Hit";//match it to the editor
     [SerializeField] Animator ModelAnimator;
     [SerializeField] float CoolDownHit=1.0f;
+    [SerializeField] float AdjsutSpeed=-2.0f;
     float lastHit=0;
+    LevelGenerator levelGenerator;
+    PlayerController controller;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         ModelAnimator = GetComponentInChildren<Animator>();
+        levelGenerator = FindFirstObjectByType<LevelGenerator>();
+        controller = GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -29,32 +36,54 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(DamageTag) && CheckHitCoolDown())
         {
-            ModelAnimator.SetTrigger("Hit");
-            lastHit = Time.time;
+            GotHit();
         }
 
     }
 
-  
+
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag(CoinTag))
         {
-            Debug.Log("Coin Picked Up");
+            PickUpCoin(other);
             other.gameObject.SetActive(false);// dont destroy the object since it is childed to the Path Chunk
         }
 
         if (other.gameObject.CompareTag(HealthTag))
         {
-            Debug.Log("Healing");
+            PowerUp(other);
             other.gameObject.SetActive(false);// dont destroy the object since it is childed to the Path Chunk
         }
 
         if (other.gameObject.CompareTag(DamageTag) && CheckHitCoolDown())
         {
-            ModelAnimator.SetTrigger("Hit");
-            lastHit = Time.time;
+            GotHit();
         }
+    }
+
+    private void GotHit()
+    {
+        ModelAnimator.SetTrigger("Hit");
+        levelGenerator.ChangeLevelSpeedBy(AdjsutSpeed);
+        controller.AdjustMoveSpeed(AdjsutSpeed);
+        lastHit = Time.time; 
+    }
+
+
+  
+    private void PowerUp(Collider other)
+    {
+        Assert.IsTrue(other.gameObject.GetComponent<PickUp>().GetPickUp()==Type.health);
+        levelGenerator.ChangeLevelSpeedBy(-AdjsutSpeed);
+        controller.AdjustMoveSpeed(-AdjsutSpeed);
+        other.gameObject.GetComponent<PickUp>().GetPickAmmount();
+    }
+
+    private void PickUpCoin(Collider other)
+    {
+        Assert.IsTrue(other.gameObject.GetComponent<PickUp>().GetPickUp() == Type.coin);
+        Debug.Log("Picked UpCoins :" + other.gameObject.GetComponent<PickUp>().GetPickAmmount());
     }
 }

@@ -4,7 +4,9 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     Vector2 movement;
-    [SerializeField] float movementSpeed = 5f;
+    [SerializeField] float movementSpeed = 8f;
+    [SerializeField] float MinMoveSpeed = 5f;
+    [SerializeField] float MaxMoveSpeed = 12f;
     Rigidbody rb;
     [SerializeField] float xClamp = 4f;
     [SerializeField] float ZClamp = 2f;
@@ -28,14 +30,11 @@ public class PlayerController : MonoBehaviour
 
         rb.MovePosition(position);
 
-        ClampPosition();
     }
-
-    private void ClampPosition()
+    public void AdjustMoveSpeed(float inMoveSpeed) 
     {
-       
+        movementSpeed = Mathf.Clamp(movementSpeed + inMoveSpeed, MinMoveSpeed, MaxMoveSpeed);  
     }
-
     public void GetMovementInput(InputAction.CallbackContext callbackContext)
     {
         movement = callbackContext.ReadValue<Vector2>();
