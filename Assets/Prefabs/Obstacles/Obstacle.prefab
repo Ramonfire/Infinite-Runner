@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2122544642214989167}
+  - component: {fileID: 6485510008013126649}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Damage
@@ -32,6 +33,18 @@ Transform:
   - {fileID: 5267755408553469595}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6485510008013126649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518273554706462610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c23e8857ebb52c49aee16359f3da905, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2397894356532847339
 GameObject:
   m_ObjectHideFlags: 0

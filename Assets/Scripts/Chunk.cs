@@ -6,7 +6,7 @@ public class Chunk : MonoBehaviour
     [SerializeField] GameObject FencePrefab;
     [SerializeField] GameObject HealthPrefab;
     [SerializeField] GameObject CoinPrefab;
-    [SerializeField] float[] Lanes = { -2.5f,0,2.5f };
+    [SerializeField] float[] Lanes = { -3f,0,3f };
     [SerializeField] float appleSpawnChace = 0.3f;
     [SerializeField] float CoinSpawnChance = 0.5f;
     [SerializeField] int maxCoins = 10;

@@ -80,7 +80,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5917945597497581527, guid: 7c241ce7df21bd34199a7f79cae0a014, type: 3}
       propertyPath: m_TagString
-      value: damage
+      value: Damage
       objectReference: {fileID: 0}
     - target: {fileID: 6443266257782195565, guid: 7c241ce7df21bd34199a7f79cae0a014, type: 3}
       propertyPath: m_LocalPosition.x

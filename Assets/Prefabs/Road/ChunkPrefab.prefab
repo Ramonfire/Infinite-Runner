@@ -51,9 +51,12 @@ MonoBehaviour:
   HealthPrefab: {fileID: 2360090606935413553, guid: 44d7036f5d5b7564c9664af33bca2266, type: 3}
   CoinPrefab: {fileID: 8563605078923740462, guid: 02c98c93f377fda4da61ee7dbc0f8f23, type: 3}
   Lanes:
-  - -2.5
+  - -3
   - 0
-  - 2.5
+  - 3
+  appleSpawnChace: 0.3
+  CoinSpawnChance: 0.5
+  maxCoins: 10
 --- !u!1 &4101906741690038838
 GameObject:
   m_ObjectHideFlags: 0
