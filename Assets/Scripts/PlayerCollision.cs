@@ -14,12 +14,18 @@ public class PlayerCollision : MonoBehaviour
     float lastHit=0;
     LevelGenerator levelGenerator;
     PlayerController controller;
+    ScoreManager scoreManager;
+    TimeTracker timeTracker;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         ModelAnimator = GetComponentInChildren<Animator>();
         levelGenerator = FindFirstObjectByType<LevelGenerator>();
         controller = GetComponent<PlayerController>();
+
+        //these two are on the same object
+        scoreManager = FindFirstObjectByType<ScoreManager>();
+        timeTracker = scoreManager.GetComponent<TimeTracker>();
     }
 
     // Update is called once per frame
@@ -34,6 +40,9 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (timeTracker.IsGameOver)
+            return;
+
         if (collision.gameObject.CompareTag(DamageTag) && CheckHitCoolDown())
         {
             GotHit();
@@ -45,6 +54,9 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (timeTracker.IsGameOver)
+            return;
+
         if (other.gameObject.CompareTag(CoinTag))
         {
             PickUpCoin(other);
@@ -68,6 +80,7 @@ public class PlayerCollision : MonoBehaviour
         ModelAnimator.SetTrigger("Hit");
         levelGenerator.ChangeLevelSpeedBy(AdjsutSpeed);
         controller.AdjustMoveSpeed(AdjsutSpeed);
+        timeTracker.AddTime(-10);
         lastHit = Time.time; 
     }
 
@@ -78,12 +91,12 @@ public class PlayerCollision : MonoBehaviour
         Assert.IsTrue(other.gameObject.GetComponent<PickUp>().GetPickUp()==Type.health);
         levelGenerator.ChangeLevelSpeedBy(-AdjsutSpeed);
         controller.AdjustMoveSpeed(-AdjsutSpeed);
-        other.gameObject.GetComponent<PickUp>().GetPickAmmount();
+        timeTracker.AddTime(5);
     }
 
     private void PickUpCoin(Collider other)
     {
         Assert.IsTrue(other.gameObject.GetComponent<PickUp>().GetPickUp() == Type.coin);
-        Debug.Log("Picked UpCoins :" + other.gameObject.GetComponent<PickUp>().GetPickAmmount());
+        scoreManager.AddScore(other.gameObject.GetComponent<PickUp>().GetPickAmmount());
     }
 }

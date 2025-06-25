@@ -94,18 +94,13 @@ public class LevelGenerator : MonoBehaviour
 
     public void ChangeLevelSpeedBy(float SpeedAmmount) 
     {
-        moveSpeed += SpeedAmmount;
-        if (moveSpeed < minSpeed)
+        float newMoveSpeed = moveSpeed+ SpeedAmmount;
+        newMoveSpeed = Mathf.Clamp(newMoveSpeed, minSpeed, maxSpeed);
+        if (moveSpeed != newMoveSpeed)
         {
-            moveSpeed = minSpeed;
-            return;
-        }
-        if (moveSpeed > maxSpeed)
-        {
-            moveSpeed = maxSpeed;
-            return;
-        }
-        Physics.gravity = new Vector3(Physics.gravity.x, Physics.gravity.y, Physics.gravity.z - SpeedAmmount);
-        camera.ChangeCameraFov(SpeedAmmount);
+            moveSpeed = newMoveSpeed;
+            Physics.gravity = new Vector3(Physics.gravity.x, Physics.gravity.y, Physics.gravity.z - SpeedAmmount);
+            camera.ChangeCameraFov(SpeedAmmount);
+        } 
     }
 }

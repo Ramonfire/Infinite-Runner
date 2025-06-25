@@ -14,7 +14,7 @@ public class PickUp : MonoBehaviour
     [SerializeField] int Ammount; 
     private void Awake()
     {
-        Ammount = UnityEngine.Random.Range(1,10);
+        Ammount = 100;
     }
     public Type GetPickUp() { return Type; }
     public int GetPickAmmount() { return Ammount; }
