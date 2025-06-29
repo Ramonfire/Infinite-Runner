@@ -7,10 +7,12 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField] string CoinTag = "Coin"; //match it to the editor
     [SerializeField] string HealthTag = "Health";//match it to the editor
     [SerializeField] string DamageTag = "Damage";//match it to the editor
-    [SerializeField] string TriggerName = "Hit";//match it to the editor
+    [SerializeField] string CheckPointTag = "CheckPoint";//match it to the editor
+    [SerializeField] string AnimationTriggerName = "Hit";//match it to the editor for animation
     [SerializeField] Animator ModelAnimator;
     [SerializeField] float CoolDownHit=1.0f;
     [SerializeField] float AdjsutSpeed=-2.0f;
+    [SerializeField] int TimePenalty=8;
     float lastHit=0;
     LevelGenerator levelGenerator;
     PlayerController controller;
@@ -73,6 +75,17 @@ public class PlayerCollision : MonoBehaviour
         {
             GotHit();
         }
+
+
+        if (other.gameObject.CompareTag(CheckPointTag) && CheckHitCoolDown())
+        {
+            AddTime();
+        }
+    }
+
+    private void AddTime()
+    {
+        timeTracker.AddTime(Random.Range(5, TimePenalty));// add from 5 to 7 seconds
     }
 
     private void GotHit()
@@ -80,7 +93,7 @@ public class PlayerCollision : MonoBehaviour
         ModelAnimator.SetTrigger("Hit");
         levelGenerator.ChangeLevelSpeedBy(AdjsutSpeed);
         controller.AdjustMoveSpeed(AdjsutSpeed);
-        timeTracker.AddTime(-10);
+        timeTracker.AddTime(-TimePenalty);
         lastHit = Time.time; 
     }
 
@@ -91,7 +104,7 @@ public class PlayerCollision : MonoBehaviour
         Assert.IsTrue(other.gameObject.GetComponent<PickUp>().GetPickUp()==Type.health);
         levelGenerator.ChangeLevelSpeedBy(-AdjsutSpeed);
         controller.AdjustMoveSpeed(-AdjsutSpeed);
-        timeTracker.AddTime(5);
+        timeTracker.AddTime(4);// you gain time for moving faster
     }
 
     private void PickUpCoin(Collider other)

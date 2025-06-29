@@ -3,14 +3,16 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    [SerializeField] GameObject ChunkPrefab;
+    [SerializeField] GameObject[] ChunkPrefabs;
+    [SerializeField] GameObject CheckPointChunk;
     [SerializeField] Transform ChunkParent;
     [SerializeField] int startingChunkAmount =12;
     [SerializeField] int ChunkLength = 10;
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float minSpeed = 2f;
     [SerializeField] float maxSpeed = 20f;
-
+    [SerializeField] int CheckPointSpawnInterval = 8;
+    int ChunkSpawned = 0;
 
     List<GameObject> Chunks = new List<GameObject>();
     CameraController camera;
@@ -33,14 +35,11 @@ public class LevelGenerator : MonoBehaviour
     }
     private void GenerateChunks()
     {
-        if (ChunkPrefab != null)
+        if (ChunkPrefabs.Length>0)
         {
             for (int i = 0; i < startingChunkAmount; i++)
             {
-                Vector3 position= CalCulatePosition(); 
-
-               GameObject CreatedObject =  Instantiate(ChunkPrefab, position, Quaternion.identity, ChunkParent);
-               Chunks.Add(CreatedObject);
+                CreateNewChunk();
             }
         }
     }
@@ -71,9 +70,20 @@ public class LevelGenerator : MonoBehaviour
     private void CreateNewChunk()
     {
         Vector3 position = CalCulatePosition();
-        GameObject CreatedObject = Instantiate(ChunkPrefab, position, Quaternion.identity, ChunkParent);
+        GameObject CreatedObject;
 
+        if (ChunkSpawned % CheckPointSpawnInterval == 0) //Spawn a checkPoint every CheckPointSpawnInterval else a random chunk
+        {
+            CreatedObject = Instantiate(CheckPointChunk, position, Quaternion.identity, ChunkParent);
+        }
+        else 
+        {
+            GameObject Chunk = ChunkPrefabs[Random.Range(0, ChunkPrefabs.Length)];
+            CreatedObject = Instantiate(Chunk, position, Quaternion.identity, ChunkParent);
+        }
+           
         Chunks.Add(CreatedObject);
+        ChunkSpawned++;
     }
     // calculate the chunk position based on the last one before it
     private Vector3 CalCulatePosition()

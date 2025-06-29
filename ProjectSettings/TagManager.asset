@@ -7,6 +7,7 @@ TagManager:
   - Health
   - Damage
   - Coin
+  - CheckPoint
   layers:
   - Default
   - TransparentFX

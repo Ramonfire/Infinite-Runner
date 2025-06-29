@@ -12,6 +12,7 @@ public class TimeTracker : MonoBehaviour
     [SerializeField] Canvas GameOverCanvas;
     [SerializeField] PlayerController playerController;
     float Timeleft = 0;
+    float TimeSurvived = 0;
     bool isGameOver = false;
     public bool IsGameOver{ get { return isGameOver; } }
     private void Awake()
@@ -27,7 +28,7 @@ public class TimeTracker : MonoBehaviour
 
 
         Timeleft -= Time.deltaTime;
-
+        TimeSurvived += Time.deltaTime;
         if (TimeText != null)
             TimeText.SetText("Time Left: " + Timeleft.ToString("F1"));
         if (Timeleft <= 0) 
@@ -35,6 +36,11 @@ public class TimeTracker : MonoBehaviour
             TimeText.SetText("Time Left: 0 " );
             GameOver();
         }
+
+        if (Timeleft <= 10) 
+            TimeText.color=Color.red;
+        else
+            TimeText.color = Color.black;
 
     }
 
